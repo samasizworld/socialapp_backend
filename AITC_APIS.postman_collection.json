@@ -1,0 +1,613 @@
+{
+	"info": {
+		"_postman_id": "a52530ff-187e-46bf-9b0f-a62fb5a1c03a",
+		"name": "AITC_APIS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11075435"
+	},
+	"item": [
+		{
+			"name": "Event_APIs",
+			"item": [
+				{
+					"name": "Get Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/events?search=&page=&pageSize=&orderDir=&orderBy=&category=Music",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": ""
+								},
+								{
+									"key": "page",
+									"value": ""
+								},
+								{
+									"key": "pageSize",
+									"value": ""
+								},
+								{
+									"key": "orderDir",
+									"value": ""
+								},
+								{
+									"key": "orderBy",
+									"value": ""
+								},
+								{
+									"key": "category",
+									"value": "Music"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Likes Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3/likes",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dislike events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3/dislikes",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3",
+								"dislikes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Text\": \"This is awesome event.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3/comment",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Text\": \"This is awesome event. Updated??????\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3/comment/66af2992318e1df5560227c4",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3",
+								"comment",
+								"66af2992318e1df5560227c4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete comment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3/comment/66ae6e4ea55284ada94c3eb6",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66ae690617955ca772eb60f3",
+								"comment",
+								"66ae6e4ea55284ada94c3eb6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Event",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"date\",new Date())"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Title\": \"Music event by Genki\",\r\n    \"Description\": \"This is music\",\r\n    \"Location\": \"Kathmandu\",\r\n    \"Image\": \"\",\r\n    \"Datetime\": \"{{date}}\",\r\n    \"Category\": \"Music\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/events",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Fullname\": \"Aashish Pudasaini\",\r\n    \"Email\": \"testelkiwi@gmail.com\",\r\n    \"Password\": \"testelkiwi123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/register",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddFollowers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Followers\": [\r\n        \"66af014f29e6faabb4c75dbf\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/66ae7c196e6dd789bb43a548/followers",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"66ae7c196e6dd789bb43a548",
+						"followers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Notifications",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Followers\": [\r\n        \"66af014f29e6faabb4c75dbf\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/66af014f29e6faabb4c75dbf/notifications?pageSize=1&page=1",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"66af014f29e6faabb4c75dbf",
+						"notifications"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "1"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Followers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accesstoken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Followers\": [\r\n        \"66ae7c016e6dd789bb43a544\"\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/66af014f29e6faabb4c75dbf/followers/66af08f461235ed2e5ab262f",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"66af014f29e6faabb4c75dbf",
+						"followers",
+						"66af08f461235ed2e5ab262f"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"accesstoken\",pm.response.json().accessToken);\r",
+							"\r",
+							"pm.environment.set(\"refreshtoken\",pm.response.json().refreshToken);\r",
+							"pm.environment.set(\"email\",pm.response.json().email);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Email\": \"testelkiwi@gmail.com\",\r\n    \"Password\": \"testelkiwi123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/login",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Regenerate Accesstoken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"accesstoken\",pm.response.json().accessToken);\r",
+							"\r",
+							"pm.environment.set(\"refreshtoken\",pm.response.json().refreshToken);\r",
+							"pm.environment.set(\"email\",pm.response.json().email);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \"{{refreshtoken}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}api/v1/users/refresh",
+					"host": [
+						"{{URL}}api"
+					],
+					"path": [
+						"v1",
+						"users",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
