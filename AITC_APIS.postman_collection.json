@@ -79,14 +79,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{URL}}api/v1/events/66ae690617955ca772eb60f3",
+							"raw": "{{URL}}api/v1/events/66b38380e001a3243ddd88dd",
 							"host": [
 								"{{URL}}api"
 							],
 							"path": [
 								"v1",
 								"events",
-								"66ae690617955ca772eb60f3"
+								"66b38380e001a3243ddd88dd"
 							]
 						}
 					},
@@ -186,6 +186,47 @@
 								"events",
 								"66ae690617955ca772eb60f3",
 								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add comment Copy",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Text\": \"This is awesome event.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/mongouser.txt",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"mongouser.txt"
 							]
 						}
 					},
@@ -299,13 +340,39 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\r\n    \"Title\": \"Music event by Genki\",\r\n    \"Description\": \"This is music\",\r\n    \"Location\": \"Kathmandu\",\r\n    \"Image\": \"\",\r\n    \"Datetime\": \"{{date}}\",\r\n    \"Category\": \"Music\"\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/user/Downloads/eac83518-1975-4c4b-9e70-82a537cb74b6.jpeg"
+								},
+								{
+									"key": "Title",
+									"value": "Music event by Nepal Music Community",
+									"type": "text"
+								},
+								{
+									"key": "Description",
+									"value": "Music event",
+									"type": "text"
+								},
+								{
+									"key": "Location",
+									"value": "Kathmandu",
+									"type": "text"
+								},
+								{
+									"key": "Datetime",
+									"value": "{{date}}",
+									"type": "text"
+								},
+								{
+									"key": "Category",
+									"value": "Music",
+									"type": "text"
 								}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{URL}}api/v1/events",
@@ -315,6 +382,82 @@
 							"path": [
 								"v1",
 								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Event",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"date\",new Date())"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{accesstoken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/user/Downloads/control.jpg"
+								},
+								{
+									"key": "Title",
+									"value": "Music event by Nepal Music Community",
+									"type": "text"
+								},
+								{
+									"key": "Description",
+									"value": "Music event",
+									"type": "text"
+								},
+								{
+									"key": "Location",
+									"value": "Kathmandu",
+									"type": "text"
+								},
+								{
+									"key": "Datetime",
+									"value": "{{date}}",
+									"type": "text"
+								},
+								{
+									"key": "Category",
+									"value": "Music",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{URL}}api/v1/events/66b38380e001a3243ddd88dd",
+							"host": [
+								"{{URL}}api"
+							],
+							"path": [
+								"v1",
+								"events",
+								"66b38380e001a3243ddd88dd"
 							]
 						}
 					},
