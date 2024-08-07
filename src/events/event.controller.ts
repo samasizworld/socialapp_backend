@@ -1,8 +1,11 @@
-import { ConflictException, Controller, Delete, Get, NotFoundException, Post, Put, Req, Res } from "@nestjs/common";
+import { ConflictException, Controller, Delete, Get, NotFoundException, Post, Put, Req, Res, UploadedFile, UseInterceptors } from "@nestjs/common";
 import { EventService } from "./event.service";
 import { Request, Response } from "express";
 import { EventMapper } from "./event.mapper";
 import { UserService } from "src/user/user.service";
+import { FileInterceptor } from "@nestjs/platform-express";
+import { extname } from "path";
+import { multerOptions } from "./multer.config";
 
 @Controller('/api/v1/events')
 export class EventController {
@@ -39,22 +42,25 @@ export class EventController {
         return res.status(200).send(dtos);
     }
 
-    @Post('')
+    @Post()
+    @UseInterceptors(FileInterceptor('file', multerOptions))
     async addEvent(@Req() req: Request, @Res() res: Response) {
+
         const currentUserId = req['UserId'];
-        const model: any = this.eventMapper.DTOtoModel(req.body);
+        const model: any = this.eventMapper.DTOtoModel(req.body, (req as any).file.filename);
         const event = await this.eventService.createEvent({ ...model, userId: currentUserId });
         return res.status(201).send({ _id: event._id });
     }
 
     @Put('/:eventid')
+    @UseInterceptors(FileInterceptor('file', multerOptions))
     async updateEvent(@Req() req: Request, @Res() res: Response) {
         const currentUserId = req['UserId'];
         const eventId = req.params.eventid;
-        const model: any = this.eventMapper.DTOtoModel(req.body);
+        const model: any = this.eventMapper.DTOtoModel(req.body,(req as any).file.filename);
         await this.eventService.updateEvent({ ...model, userId: currentUserId }, eventId);
-
-        const user = await this.userService.getUser(eventId);
+        const event = await this.eventService.getEvent(eventId);
+        const user = await this.userService.getUser(event.userId);
         user.notifications.unshift({ text: `The event has been updated by ${req['email']}` });
         await user.save();
         return res.status(204).send();
@@ -161,4 +167,8 @@ export class EventController {
         return res.status(204).send();
     }
 
+}
+
+function diskStorage(arg0: { destination: string; filename: (req: any, file: any, callback: any) => void; }): any {
+    throw new Error("Function not implemented.");
 }

@@ -41,11 +41,11 @@ export class EventMapper {
         }
     }
 
-    DTOtoModel(dto: any) {
+    DTOtoModel(dto: any, filename: string) {
         return {
             title: dto.Title,
             description: dto.Description,
-            image: dto.Image,
+            image: `http://localhost:3000/${filename}`,
             location: dto.Location,
             category: dto.Category,
             datetime: dto.Datetime
